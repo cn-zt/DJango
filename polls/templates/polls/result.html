@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>result</title>
+    {% load static %}
+    <style>
+        body{
+            padding:0;
+            margin:0;
+            background: url({% static 'images/background.png' %}) no-repeat center center / cover;
+        }
+     .index{
+            text-align: center;
+            width: 800px;
+            margin: auto;
+        }
+     .back-button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;  /* 去除下划线 */
+            display: inline-block;  /* 使超链接可以设置上下边距 */
+            margin-top: 10px;  /* 调整超链接与图片的间距，根据需要修改 */
+        }
+    </style>
+</head>
+<body>
+    <div class="index">
+        <img src="{% static 'images/result.png' %}" alt="图片已失效" width="800px">
+        <h3>你已经完成投票</h3>
+        <a href="{% url 'home' %}" class="back-button">返回首页</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    {% load static %}
+    <!--可无视（可有可无）-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+
+    <!--网上调用的开源流行的响应式框架-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-grid.min.css' %}"/>
+
+    <!--图标库-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+
+    <!--主要样式-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+
+    <style>
+        body{
+        padding:0;
+        margin:0;
+        background:url('../static/images/background.png') no-repeat center center / cover;
+        }
+        .saying {
+   margin: 0 auto; /* 水平居中 */
+   margin-top: 60px;
+   background-color: white;	/* 背景颜色 */
+   text-align: center; /* 内部文本水平居中 */
+   display: flex;
+   flex-direction: column; /* 使内部元素垂直排列 */
+   justify-content: center; /* 内部元素垂直居中 */
+   align-items: center; /* 内部元素水平居中 */
+   width: 500px; /* 设置盒子宽度 */
+   height: 200px; /* 设置盒子高度 */
+   border-radius: 10px; /* 圆角 */
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 阴影效果 */
+   font-family: "华文行楷", cursive;
+   font-size: 20px;
+   letter-spacing: 2px;
+}
+.head{
+     margin: 0 auto; /* 水平居中 */
+   text-align: center; /* 内部文本水平居中 */
+   align-items: center; /* 内部元素水平居中 */
+   font-family:楷体;
+   font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+<div class="head">
+    <h3 style="font-weight:bold;">请从以下主题中选择一个并投票。</h3>
+    Please select a topic below and vote.
+</div>
+<div class="demo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="box">
+                    <img src="../static/images/img-1.jpg">
+                    <div class="box-content">
+                        <h3 class="title">your past</h3>
+                        <span class="post">Personal journey</span>
+                        <ul class="icon">
+                            <li><a href="{% url 'vote_past' %}"><i class="fa fa-search"></i></a></li>
+                            <li><a href="#"><i class="fa fa-link"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="box">
+                    <img src="../static/images/img-2.jpg">
+                    <div class="box-content">
+                        <h3 class="title">your present</h3>
+                        <span class="post">Personal journey</span>
+                        <ul class="icon">
+                            <li><a href="{% url 'vote_present' %}"><i class="fa fa-search"></i></a></li>
+                            <li><a href="#"><i class="fa fa-link"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="box">
+                    <img class="img-clip image-clip-5" src="../static/images/img-3.jpg">
+                    <div class="box-content">
+                        <h3 class="title">your future</h3>
+                        <span class="post">Personal journey</span>
+                        <ul class="icon">
+                            <li><a href="{% url 'vote_future' %}"><i class="fa fa-search"></i></a></li>
+                            <li><a href="#"><i class="fa fa-link"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="saying">
+    <p>重要的不是传说讲述的年代</p>
+    What matters is not the era when the legend is told.
+    <p>而是讲述传说的年代</p>
+    Rather, it tells of the age of legends.
+</div>
+</body>
+</html>

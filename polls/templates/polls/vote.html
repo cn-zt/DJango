@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>{{question_type}}</title>
+    {% load static %}
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background: url({% static 'images/background.png' %}) no-repeat center center / cover;
+        }
+        #submitButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form action="{% url 'submit_votes' question_type %}" method="post" id="voteForm">
+        {% csrf_token %}
+        {% for question_content in question %}
+            <h3>{{ question_content.question_text }}</h3>
+            <ul>
+                {% for choice in question_content.get_choices %}
+                    <li>
+                        <input type="radio" id="{{ choice.id }}" name="{{ question_content.id }}" value="{{ choice.id }}" required>
+                        <label for="{{ choice.id }}">{{ choice.choice_text }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+        <button type="submit" id="submitButton">提交</button>
+    </form>
+ <script>
+        document.getElementById('voteForm').addEventListener('submit', function (e) {
+            const radios = document.querySelectorAll('input[type="radio"]:required');
+            let allSelected = true;
+            radios.forEach((radio) => {
+                if (!radio.checked) {
+                    allSelected = false;
+                    return;
+                }
+            });
+            alert('提交成功');
+        });
+    </script>
+</body>
+</html>
